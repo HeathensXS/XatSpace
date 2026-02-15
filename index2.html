@@ -2,27 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>xat.js Loader Test</title>
+    <title>xat.js Loader</title>
     <style>
-        body { background: #111; color: white; font-family: sans-serif; text-align: center; }
-        .chat-container { margin: 20px auto; width: 650px; }
-        .status-box { margin-top: 20px; padding: 15px; background: #222; border: 1px solid #444; display: inline-block; }
-        button { padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
+        /* This removes margins and makes the chat the center of attention */
+        body { 
+            background: #000; 
+            margin: 0; 
+            padding: 0; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            overflow: hidden; 
+        }
+        iframe { 
+            border: none; 
+        }
     </style>
 </head>
 <body>
 
-    <h2>xat.js Integration Test</h2>
-
-    <div class="chat-container">
-        <iframe id="xatFrame" src="https://xat.com/embed/chat.php#id=4&gn=Flirt" 
-                width="650" height="486" frameborder="0" scrolling="no"></iframe>
-    </div>
-
-    <div class="status-box">
-        <p>Current User ID: <span id="userIdDisplay">Not Detected</span></p>
-        <button id="syncBtn">Run xat.js Sync</button>
-    </div>
+    <iframe id="xatFrame" src="https://xat.com/embed/chat.php#id=4&gn=Flirt" 
+            width="650" height="486" scrolling="no"></iframe>
 
     <script src="xat.js"></script>
 
