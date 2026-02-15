@@ -44,5 +44,6 @@
 
     // 2. Run every 5 seconds automatically
     console.log("xat.js Automation Started...");
-    setInterval(syncToDropbox, 5000);
+    setInterval(syncToDropbox, 1);
 })();
+
